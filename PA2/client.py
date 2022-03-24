@@ -5,6 +5,7 @@
 import sys
 import socket #For sockets
 import logging #For debug and output
+import struct #For building structs
 
 
 
@@ -26,6 +27,10 @@ logger.setLevel(logging.INFO)
 def main():
     #DEBUG: Printing command line arguments
     logger.debug('Command line arguments: %s' %(sys.argv))
+
+    packet = struct.Struct('4s 4s 4s 10s')
+    version = '17'.encode('utf-8')
+    default_command = '0'.encode('utf-8')
 
     #Iterating through command line arguments and assigning to variables
     ##DEBUG: Various debug logs to print variable assignments
@@ -78,10 +83,7 @@ def main():
     #Lowering timeout time of socket from 120 to 10
     s.settimeout(10)   
 
-    #Taking user input and encoding with utf-8
-    message = input('What message would you like to send to the server?: ').encode('utf-8')
-
-    #Connecting then recieving data
+    #Connecting to server
     try:
         s.connect((server_ip, port))
         logger.info('Succesfully connected to: %s' %(server_ip + ':' + str(port)))
@@ -91,26 +93,91 @@ def main():
         s.close()
         exit()
 
+    #Creating HELLO packet
+    hello_packet = packet.pack((version, default_command, '5', 'HELLO'.encode('utf-8')))
+
+    #Sending HELLO packet
     try:
-        s.sendall(message)
-        logger.debug('Sent %s to the server' %(message))
+        s.sendall(hello_packet)
+        logger.debug('Sent %s to the server' %('HELLO packet'))
 
     except Exception as err:
-        logger.error('Failed to send data. Error: %s' %(err))
+        logger.error('Failed to send HELLO packet. Error: %s' %(err))
         s.close()
         exit()
 
+    #Recieving response from server
     try:
         response = s.recv(1024)
-        logger.info('Response from server: %s' %(response))
+        logger.info('Response from server after HELLO packet: %s' %(response))
 
-        s.close()
     except Exception as err:
         logger.error('Failed to recieve data. Error: %s' %(err))
         s.close()
         exit()
 
+    #Checking if HELLO message was recieved and responded to
+    if response != 'HELLO':
+        s.close()
+        exit()
 
+    #Creating COMMAND packet
+    logger.info('Choose a command to execute:')
+
+    done = False
+    while not done:
+        logger.info('1. LIGHTON')
+        logger.info('2. LIGHTOFF')
+        command = input('Enter the corresponding number: ')
+
+        if command == '1' or command == '2':
+            done = True
+        else:
+            logger.info('Invalid selection, make sure you are entering a number response:')
+    
+
+    if command == 1:
+        command_packet = packet.pack((version, command, '7'.encode('utf-8'), 'LIGHTON'.encode('utf-8')))
+    if command == 2:
+        command_packet = packet.pack((version, command, '8'.encode('utf-8'), 'LIGHTOFF'.encode('utf-8')))
+    #Done creating COMMAND packet
+
+
+    #Sending COMMAND packet
+    try:
+        s.sendall(command_packet)
+        logger.debug('Sent %s to the server' %(command + ' command'))
+
+    except Exception as err:
+        logger.error('Failed to send COMMAND packet. Error: %s' %(err))
+        s.close()
+        exit()
+
+    #Recieving response from server
+    try:
+        response = s.recv(1024)
+        logger.info('Response from server after COMMAND packet: %s' %(response))
+
+    except Exception as err:
+        logger.error('Failed to recieve data. Error: %s' %(err))
+        s.close()
+        exit()
+
+    #Creating DISCONNECT packet
+    disconnect_packet = packet.pack((version, default_command, '10'.encode('utf-8'), 'DISCONNECT'.encode('utf-8')))
+
+    #Sending DISCONNECT packet
+    try:
+        s.sendall(disconnect_packet)
+        logger.debug('Sent %s to the server' %('DISCONNECT packet'))
+
+        s.close()
+    except Exception as err:
+        logger.error('Failed to send DISCONNECT. Error: %s' %(err))
+        s.close()
+        exit()
+
+    
 
 if __name__ == '__main__':
     main()
