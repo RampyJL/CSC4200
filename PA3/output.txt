@@ -1,0 +1,4 @@
+Succesful connection from: ('47.40.202.141', 54529)
+Message from client: b'network'
+Succesful connection from: ('47.40.202.141', 54543)
+Message from client: b'network'
