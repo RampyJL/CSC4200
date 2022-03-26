@@ -1,4 +1,66 @@
-Succesful connection from: ('47.40.202.141', 54529)
-Message from client: b'network'
-Succesful connection from: ('47.40.202.141', 54543)
-Message from client: b'network'
+
+Succesful connection from: ('10.129.196.240', 57757)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58027)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58034)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58042)
+Header: 17, 0, 5
+HERE
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58047)
+Header: 17, 0, 5
+HERE
+HERE
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58056)
+Header: 17, 0, 5
+Before unpack
+(b'HELLO',)
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58065)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58107)
+Header: 17, 0, 5
+Succesful connection from: ('10.129.196.240', 58202)
+Header: 17, 0, 5
+Succesful connection from: ('10.129.196.240', 58207)
+Header: 17, 0, 5
+Succesful connection from: ('10.129.196.240', 58226)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Succesful connection from: ('10.129.196.240', 58236)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Before IF statments
+After IF statements
+Succesful connection from: ('10.129.196.240', 58239)
+Header: 17, 0, 5
+(b'HELLO',)
+Ignoring command: Unknown command - 0
+Before IF statments
+After IF statements
+Succesful connection from: ('10.129.196.240', 58258)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Before IF statments
+Succesful connection from: ('10.129.196.240', 58284)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Before IF statments
+Recieved HELLO message: Responding
+After IF statements
+Succesful connection from: ('192.168.1.9', 58570)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Recieved HELLO message: Responding
+Header: 17, 1, 7
+Executing supported command: LIGHTON
+Header: 17, 0, 10
+Ignoring command: Unknown command - 0
+Recieved DISCONNECT message: Severing connection

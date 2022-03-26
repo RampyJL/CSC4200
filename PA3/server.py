@@ -6,7 +6,7 @@ import sys
 import random
 import socket #For sockets
 import logging #For debug and output
-
+import struct #For unpacking packets
 
 
 #Creating logger and stream handler
@@ -64,27 +64,45 @@ def main():
     file_handler = logging.FileHandler(log_file)
     logger.addHandler(file_handler)
 
-    tosend = ''
-    quotes = open('quotes.txt').read().splitlines()
-    to_send = bytes(random.choice(quotes), 'utf-8')
-
     s.bind(('', port))
-    s.listen(5)
 
     while True:
 
-        #Connecting then recieving data
+        s.listen(5)
 
+        #Connecting then recieving data
         connection, address = s.accept()
         logger.info('Succesful connection from: %s' %(str(address)))
 
-        message = connection.recv(1024)
-        logger.info('Message from client: %s' %(message))
+        while(True):
+            header = connection.recv(12)
+            version, msg_type, msg_len = struct.unpack('iii', header)
+            logger.info(f'Header: {version}, {msg_type}, {msg_len}')
+            
+            if version != 17:
+                logger.info('Version mismatch: Severing Connection')
+                connection.close()
+                break
 
+            message_hex = connection.recv(10)
+            message_tuple = struct.unpack(f'{str(msg_len)}s', message_hex)
+            message = message_tuple[0].decode('utf-8')
 
-        if 'network' in message.decode('utf-8'):
-            connection.sendall(to_send)
-            logger.debug('Sent %s to the client' %(tosend))
+            if msg_type == 1 or msg_type == 2:
+                logger.info(f'Executing supported command: {message}')
+                connection.send('SUCCESS'.encode('utf-8'))
+            else:
+                logger.info(f'Ignoring command: Unknown command - {msg_type}')
+                
+                if 'HELLO' in message:
+                    logger.info('Recieved HELLO message: Responding')
+                    connection.send('HELLO'.encode('utf-8'))
+
+                if  'DISCONNECT' in message:
+                    logger.info('Recieved DISCONNECT message: Severing connection')
+                    connection.close()
+                    break
+
 
     connection.close()
     s.close()

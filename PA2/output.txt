@@ -1,36 +1,54 @@
 Socket created successfully
-Succesfully connected to: 34.75.112.195:8001
-Response from server: b'Hello there (\'149.149.2.105\', 46948). Here is another random quote of wisdom for you:Rule: "You shouldn\'t have to open up a black box and take it apart to find out you\'ve been pushing the wrong buttons!" Corollary: "Every black box should have at least TWO blinking lights: "Paper Jam" and "Service Required" (or equivalent).", Steven D. Majewski, 9 Sep 1993\n'
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: timed out
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: timed out
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Response from server after HELLO packet: b''
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Response from server after HELLO packet: b''
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Response from server after HELLO packet: b''
+Socket created successfully
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
 Socket created successfully
 Failed to connect and/or send/recieve data. Error: [Errno 61] Connection refused
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: [Errno 61] Connection refused
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: timed out
+Succesfully connected to: 10.129.196.240:8001
+Failed to recieve data. Error: timed out
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: timed out
+Succesfully connected to: 10.129.196.240:8001
+Response from server after HELLO packet: b''
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: [Errno 61] Connection refused
+Succesfully connected to: 10.129.196.240:8001
+Response from server after HELLO packet: b'HELLO'
 Socket created successfully
-Failed to connect and/or send/recieve data. Error: [Errno 61] Connection refused
-Socket created successfully
-Succesfully connected to: 34.125.217.250:1041
-Failed to recieve data. Error: [Errno 54] Connection reset by peer
-Socket created successfully
-Succesfully connected to: 34.125.217.250:5062
-Response from server: b''
-Socket created successfully
-Succesfully connected to: 34.125.217.250:5062
-Response from server: b''
-Socket created successfully
-Succesfully connected to: 34.125.217.250:5062
-Response from server: b'Some rejected alternate names for "Monty Python\'s Flying Circus":1 2 3 / It\'s Them! / Arthur Megapode\'s Flying Circus / The Horrible Earnest Megapode / The Panic Show / The Plastic Mac Show / Ow! It\'s Colin Plint! / Vaseline Review / Vaseline Parade / The Keen Show / Brian\'s Flying Circus / The Year of the Stoat / Cynthia Fellatio\'s Flying Circus / Owl Stretching Time / The Whizzo Easishow! (Guaranteed to last 1/2 hour! Money back if not!), From Kim "Howard" Johnson\'s Life Before and After Monty Python. It\'s interesting to contemplate what Python would have been called if one of these names had been chosen.'
-Socket created successfully
-Succesfully connected to: 34.125.217.250:5062
-Response from server: b'Some rejected alternate names for "Monty Python\'s Flying Circus":1 2 3 / It\'s Them! / Arthur Megapode\'s Flying Circus / The Horrible Earnest Megapode / The Panic Show / The Plastic Mac Show / Ow! It\'s Colin Plint! / Vaseline Review / Vaseline Parade / The Keen Show / Brian\'s Flying Circus / The Year of the Stoat / Cynthia Fellatio\'s Flying Circus / Owl Stretching Time / The Whizzo Easishow! (Guaranteed to last 1/2 hour! Money back if not!), From Kim "Howard" Johnson\'s Life Before and After Monty Python. It\'s interesting to contemplate what Python would have been called if one of these names had been chosen.'
-Socket created successfully
-Failed to connect and/or send/recieve data. Error: [Errno 61] Connection refused
+Succesfully connected to: 192.168.1.9:8001
+Response from server after HELLO packet: HELLO
+Choose a command to execute:
+1. LIGHTON
+2. LIGHTOFF
+Response from server after COMMAND packet: b'SUCCESS'

@@ -28,10 +28,6 @@ def main():
     #DEBUG: Printing command line arguments
     logger.debug('Command line arguments: %s' %(sys.argv))
 
-    packet = struct.Struct('4s 4s 4s 10s')
-    version = '17'.encode('utf-8')
-    default_command = '0'.encode('utf-8')
-
     #Iterating through command line arguments and assigning to variables
     ##DEBUG: Various debug logs to print variable assignments
     for i in range(1, len(sys.argv)):
@@ -93,8 +89,12 @@ def main():
         s.close()
         exit()
 
-    #Creating HELLO packet
-    hello_packet = packet.pack((version, default_command, '5', 'HELLO'.encode('utf-8')))
+
+    #Packet building
+    hello_packet = struct.pack('iii5s', 17, 0, 5, 'HELLO'.encode('utf-8'))
+    light_on_packet = struct.pack('iii7s', 17, 1, 7, 'LIGHTON'.encode('utf-8'))
+    light_off_packet = struct.pack('iii8s', 17, 2, 8, 'LIGHTOFF'.encode('utf-8'))
+    disconnect_packet = struct.pack('iii10s', 17, 0, 10, 'DISCONNECT'.encode('utf-8'))
 
     #Sending HELLO packet
     try:
@@ -108,7 +108,7 @@ def main():
 
     #Recieving response from server
     try:
-        response = s.recv(1024)
+        response = s.recv(1024).decode('utf-8')
         logger.info('Response from server after HELLO packet: %s' %(response))
 
     except Exception as err:
@@ -135,13 +135,10 @@ def main():
         else:
             logger.info('Invalid selection, make sure you are entering a number response:')
     
-
-    if command == 1:
-        command_packet = packet.pack((version, command, '7'.encode('utf-8'), 'LIGHTON'.encode('utf-8')))
-    if command == 2:
-        command_packet = packet.pack((version, command, '8'.encode('utf-8'), 'LIGHTOFF'.encode('utf-8')))
-    #Done creating COMMAND packet
-
+    if(command == '1'):
+        command_packet = light_on_packet
+    else:
+        command_packet = light_off_packet
 
     #Sending COMMAND packet
     try:
@@ -163,8 +160,6 @@ def main():
         s.close()
         exit()
 
-    #Creating DISCONNECT packet
-    disconnect_packet = packet.pack((version, default_command, '10'.encode('utf-8'), 'DISCONNECT'.encode('utf-8')))
 
     #Sending DISCONNECT packet
     try:
