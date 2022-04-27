@@ -1,0 +1,14 @@
+Socket created successfully
+Succesfully connected to: 192.168.1.9:8001
+Response from server after HELLO packet: HELLO
+Choose a command to execute:
+1. LIGHTON
+2. LIGHTOFF
+Response from server after COMMAND packet: b'SUCCESS'
+Socket created successfully
+Succesfully connected to: 192.168.1.9:8001
+Response from server after HELLO packet: HELLO
+Choose a command to execute:
+1. LIGHTON
+2. LIGHTOFF
+Response from server after COMMAND packet: b'SUCCESS'

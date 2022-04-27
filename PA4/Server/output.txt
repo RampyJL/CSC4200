@@ -1,0 +1,18 @@
+Succesful connection from: ('192.168.1.9', 58698)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Recieved HELLO message: Responding
+Header: 17, 1, 7
+Executing supported command: LIGHTON
+Header: 17, 0, 10
+Ignoring command: Unknown command - 0
+Recieved DISCONNECT message: Severing connection
+Succesful connection from: ('192.168.1.9', 58699)
+Header: 17, 0, 5
+Ignoring command: Unknown command - 0
+Recieved HELLO message: Responding
+Header: 17, 2, 8
+Executing supported command: LIGHTOFF
+Header: 17, 0, 10
+Ignoring command: Unknown command - 0
+Recieved DISCONNECT message: Severing connection
